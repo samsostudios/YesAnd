@@ -31,33 +31,37 @@ class Preloader {
     const timeMain = 0.6;
 
     const tl = gsap.timeline();
-    tl.set(this.logo, { scale: 0.2 });
+    tl.set(this.logo, { scale: 0.8 });
     tl.to(this.logo, { opacity: 1, ease: 'power4.inOut' });
-    tl.to(this.logo, { duration: timeMain, scale: 0.4, ease: easeMain });
-    // tl.to(this.mask, { backgroundColor: '#FAB884', ease: easeMain }, '<');
-    tl.to(this.logo, { duration: timeMain, scale: 0.6, ease: easeMain });
-    // tl.to(this.mask, { backgroundColor: '#8697B8', ease: easeMain }, '<');
-    tl.to(this.logo, { duration: timeMain, scale: 0.8, ease: easeMain });
-    // tl.to(this.mask, { backgroundColor: '#F68DA5', ease: easeMain }, '<');
     tl.to(this.logo, { duration: timeMain, scale: 1, ease: easeMain });
-    // tl.to(this.mask, { backgroundColor: '#DA2908', ease: easeMain }, '<');
-
-    // tl.set(this.component, { backgroundColor: 'transparent' });
-    tl.to(this.mask, { duration: 2, height: '0%', ease: 'power4.inOut' }, '<');
-    tl.from(this.banner, { duration: 1, y: '-100%', ease: 'power4.out' }, '<1.5');
+    tl.to(this.mask, { duration: 2, height: '0%', ease: 'expo.out' });
+    tl.from(this.banner, { duration: 1, y: '-100%', ease: 'power4.out' }, '<0.8');
     tl.set(this.component, { display: 'none' });
 
     const tlDur = tl.duration();
-
     setTimeout(
       () => {
         if (this.video.paused) this.video.play();
-        this.bannerInstance.start();
       },
       (tlDur - 1.5) * 1000,
     );
 
-    console.log(tlDur);
+    // const tl = gsap.timeline();
+    // tl.set(this.logo, { scale: 0.2 });
+    // tl.to(this.logo, { opacity: 1, ease: 'power4.inOut' });
+    // tl.to(this.logo, { duration: timeMain, scale: 0.4, ease: easeMain });
+    // // tl.to(this.mask, { backgroundColor: '#FAB884', ease: easeMain }, '<');
+    // tl.to(this.logo, { duration: timeMain, scale: 0.6, ease: easeMain });
+    // // tl.to(this.mask, { backgroundColor: '#8697B8', ease: easeMain }, '<');
+    // tl.to(this.logo, { duration: timeMain, scale: 0.8, ease: easeMain });
+    // // tl.to(this.mask, { backgroundColor: '#F68DA5', ease: easeMain }, '<');
+    // tl.to(this.logo, { duration: timeMain, scale: 1, ease: easeMain });
+    // // tl.to(this.mask, { backgroundColor: '#DA2908', ease: easeMain }, '<');
+
+    // // tl.set(this.component, { backgroundColor: 'transparent' });
+    // tl.to(this.mask, { duration: 2, height: '0%', ease: 'power4.inOut' }, '<');
+    // tl.from(this.banner, { duration: 1, y: '-100%', ease: 'power4.out' }, '<1.5');
+    // tl.set(this.component, { display: 'none' });
   }
 }
 export const preloader = () => {

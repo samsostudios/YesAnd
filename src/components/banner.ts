@@ -16,16 +16,14 @@ class Banner {
     this.movement = 0;
     this.tl = gsap.timeline({ paused: true });
 
-    setTimeout(() => {
-      this.calculateMovement();
-      this.setListeners();
-      this.animateTicker();
-    }, 1000);
+    this.calculateMovement();
+    this.setListeners();
+    this.animateTicker();
   }
 
   private calculateMovement() {
     this.tickerText.forEach((item, i) => {
-      if (i <= 1) {
+      if (i < 1) {
         const width = item.offsetWidth;
         this.movement += width;
       }
@@ -47,9 +45,6 @@ class Banner {
   private setListeners() {
     this.component.addEventListener('mouseenter', () => {
       this.tl.pause();
-      this.tickerText.forEach((item) => (){
-        gsap.set
-      })
     });
     this.component.addEventListener('mouseleave', () => {
       this.tl.play();
@@ -65,14 +60,8 @@ class Banner {
   }
 }
 
-let bannerInstance: Banner;
-
-export const initBanner = () => {
-  bannerInstance = new Banner();
-  return bannerInstance;
+export const banner = () => {
+  const bannerInstance = new Banner();
+  bannerInstance.start();
 };
-export default initBanner;
-// export const banner = () => {
-//   new Banner();
-// };
-// export default banner;
+export default banner;
